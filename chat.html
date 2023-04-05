@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+        input {
+            height: 100px;
+            width: 70%;
+            background-color: white;
+            border-bottom-left-radius: 25px;
+            border-top-left-radius: 25px;
+            border-bottom-right-radius: 0;
+            border-top-right-radius: 0;
+            border: 1px solid black;
+            color: black;
+            font-size: 30px;
+            position: absolute;
+            bottom: 1px;
+            left: 10%;
+            font-family: 'Arial', 'Helvetica', sans-serif;
+            padding: 20px;
+        }
+        button {
+            position: absolute;
+            bottom: 1px;
+            right: 1px;
+            height: 141.5px;
+            padding: 20px;
+            width: 245px;
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+            border-top-right-radius: 25px;
+            border-bottom-right-radius: 25px;
+            border: 1px solid black;
+            font-size: 50px;
+        }
+        button:hover {
+            cursor: pointer;
+        }
+        #greysquare {
+            width: 100%;
+            height: 200px;
+            background-color: rgb(226, 226, 226);
+            font-family: 'Arial', 'Helvetica', sans-serif;
+            padding: 30px;
+            font-size: 30px;
+        }
+        input:focus {
+            outline: none;
+        }
+    </style>
+    <title>JS Chatbot</title>
+  </head>
+  <body>
+    
+    <div id="greysquare"><p id="chatbotResponse"></p></div>
+    <input type="text" id="userInput" onkeydown="handleKeyDown(event)" placeholder="Send a message...">
+    <button onclick="getResponse()">Send</button>
+    <script>
+      var userName = 'Albert';
+var chatbotResponse = document.getElementById("chatbotResponse");
+var userInput = document.getElementById("userInput");
+
+function getRandomNumber(max) {
+    return Math.floor(Math.random() * max);
+}
+
+function handleKeyDown(event) {
+    if (event.keyCode === 13) {
+        getResponse();
+    }
+}
+
+function getResponse() {
+    var input = userInput.value;
+    console.log('User input:', input);
+
+    if (input === 'What is 1 + 1!') {
+        chatbotResponse.innerHTML = 1 + 1;
+    }
+
+    var randomNumber = getRandomNumber(6);
+
+    if (randomNumber === 2) {
+        chatbotResponse.innerHTML = 'Hello.';
+    } else if (randomNumber === 3) {
+        chatbotResponse.innerHTML = 'Hi!';
+    } else if (randomNumber === 4) {
+        chatbotResponse.innerHTML = `Hi ${userName}!`;
+    } else if (randomNumber === 5) {
+        chatbotResponse.innerHTML = 'Hey!';
+    } else if (randomNumber === 6) {
+        chatbotResponse.innerHTML = 'Who are you?';
+    } else {
+        chatbotResponse.innerHTML = "I don't know you.";
+    }
+
+    userInput.value = "";
+}
+      </script>
+  </body>
+</html>
